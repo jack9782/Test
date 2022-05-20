@@ -12,6 +12,7 @@
 </head>
 <body>
     <h4 class="text-center" id="title-head">KMB 到站時間搜尋</h4>
+    
     <h3 class="text-center" id="route-title">{route} 往 {destination}</h3>
     <div class="container">
 
@@ -32,17 +33,6 @@
 
     </div>
     <script>
-        // const
-        const route_list_link = "https://data.etabus.gov.hk/v1/transport/kmb/route/";
-        const route_link = "https://data.etabus.gov.hk/v1/transport/kmb/route/{route}/{direction}/{service_type}";
-        const stop_list_link = "https://data.etabus.gov.hk/v1/transport/kmb/stop";
-        const stop_link = "https://data.etabus.gov.hk/v1/transport/kmb/stop/{stop_id}";
-        const route_stop_list_link = "https://data.etabus.gov.hk/v1/transport/kmb/route-stop";
-        const route_stop_link = "https://data.etabus.gov.hk/v1/transport/kmb/route-stop/{route}/{direction}/{service_type}";
-        const eta_link = "https://data.etabus.gov.hk/v1/transport/kmb/eta/{stop_id}/{route}/{service_type}";
-        const stop_eta_link = "https://data.etabus.gov.hk/v1/transport/kmb/stop-eta/{stop_id}";
-        const route_eta_link = "https://data.etabus.gov.hk/v1/transport/kmb/route-eta/{route}/{service_type}";
-
         let stop_list_all_array = JSON.parse(localStorage.getItem('stop_list'));
         let stop_list_array = "";
         
@@ -58,6 +48,7 @@
                     url: stop_list_link,
                     success: function (ret) {
                         stop_list_all_array = ret.data;
+                        localStorage.setItem('stop_list', JSON.stringify(stop_list_all_array));
                     }
                 });
             }
@@ -102,7 +93,7 @@
                 .replace("{service_type}", service_type);
                 
                 if ($(event.target).is(".star")){
-                    star_click(route, dir, service_type, seq, event.target);
+                    star_click(stop_id, route, dir, service_type, seq, event.target);
                     return;
                 }
 
@@ -187,16 +178,23 @@
             $.each(stop_list_array, function (i, value) {
                 let stop_id = value.stop;
                 let stop_name;
+
                 // retrieve from stop_name from local variable
                 $.each(stop_list_all_array, function(i, v){
                     if (v.stop == stop_id){
                         stop_name = v.name_tc;
                     }
                 });
+                
+                let dir = direction == "inbound" ? "I" : "O";
+                // retrieve star image from local storage
+                let img_src = get_star_image_source(stop_id, route, service_type, dir, value.seq);
+
                 tbody_string += "<tr>" +
 
                     "<td>"+
-                        "<input type='image' class='star mr-2' width='25px' src='./star.png' style='vertical-align: middle'/>" + 
+                        //"<input type='image' class='star mr-2' width='25px' src='./img/star.png' style='vertical-align: middle'/>" + 
+                        "<input type='image' class='star mr-2' width='25px' src='" + img_src + "' style='vertical-align: middle'/>" + 
                         "<span class='seq'>" + value.seq + "</span></td>" +
                     "<td class='stop_time'><div class='stop'>" + stop_name + "</div>" +
                     "<div class='eta-1'></div>" +
@@ -222,19 +220,16 @@
             $(".eta-3").text("");
         }
 
-        function star_click(route, dir, service_type, seq, event_target){
+        function star_click(stop_id, route, dir, service_type, seq, event_target){
             let src = event_target.src;
             let src_filename = src.split('/').pop();
-            console.log(src.split('/').pop());
             if (src_filename == "star.png"){
-                event_target.src = "starred.png";
-                console.log("change to starred");
-                save_star_route_eta_to_local_storage();
+                event_target.src = "./img/starred.png";
+                save_star_route_eta_to_local_storage(stop_id, route, service_type, dir, seq);
             }
             else {
-                event_target.src = "star.png";
-                console.log("change to un-star");
-                remove_star_route_eta_from_local_storage();
+                event_target.src = "./img/star.png";
+                remove_star_route_eta_from_local_storage(stop_id, route, service_type, dir, seq);
             }
         }
 
