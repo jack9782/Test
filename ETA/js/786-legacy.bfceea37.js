@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkvue_test2"]=self["webpackChunkvue_test2"]||[]).push([[786],{3786:function(e,t,n){n.r(t),n.d(t,{default:function(){return l}});var r=function(){var e=this,t=e.$createElement;e._self._c;return e._m(0)},u=[function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",[n("h1",[e._v("This is WaterTaxi page.")])])}],a={name:"WaterTaxiPage"},s=a,i=n(1001),c=(0,i.Z)(s,r,u,!1,null,"66ded2ed",null),l=c.exports}}]);
-//# sourceMappingURL=786-legacy.bfceea37.js.map
