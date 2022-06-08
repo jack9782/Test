@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkvue_test2"]=self["webpackChunkvue_test2"]||[]).push([[65],{7434:function(e,t,n){n.r(t),n.d(t,{default:function(){return c}});var r=function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",[n("h1",[e._v("Sorry, page not found.")]),n("p",[e._v("Click "),n("router-link",{attrs:{to:"/"}},[e._v("here")]),e._v(" to return to home page.")],1)])},u=[],o={name:"PageNotFound"},a=o,l=n(1001),s=(0,l.Z)(a,r,u,!1,null,"01019272",null),c=s.exports}}]);
+//# sourceMappingURL=65-legacy.c63e8512.js.map
