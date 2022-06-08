@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkvue_test2"]=self["webpackChunkvue_test2"]||[]).push([[422],{7422:function(e,t,n){n.r(t),n.d(t,{default:function(){return l}});var u=function(){var e=this,t=e.$createElement;e._self._c;return e._m(0)},s=[function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",[n("h1",[e._v("This is Minibus page.")])])}],i={name:"MinibusPage"},r=i,c=n(1001),a=(0,c.Z)(r,u,s,!1,null,"5cd7dfb9",null),l=a.exports}}]);
+//# sourceMappingURL=422-legacy.5f6d9b19.js.map
