@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkvue_test2"]=self["webpackChunkvue_test2"]||[]).push([[161],{161:function(e,t,n){n.r(t),n.d(t,{default:function(){return l}});var u=function(){var e=this,t=e.$createElement;e._self._c;return e._m(0)},s=[function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",[n("h1",[e._v("This is Citybus page.")])])}],r={name:"CitybusPage"},i=r,a=n(1001),c=(0,a.Z)(i,u,s,!1,null,"256b3d66",null),l=c.exports}}]);
-//# sourceMappingURL=161-legacy.c3d5d5c8.js.map
